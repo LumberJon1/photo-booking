@@ -1,4 +1,5 @@
 const {User, Event, Task} = require("../models");
+const {AuthenticationError} = require("apollo-server-express");
 
 const resolvers = {
     Query: {
@@ -28,15 +29,30 @@ const resolvers = {
 
             return user;
         },
+        login: async (parent, {username, password}) => {
+            const user = await User.findOne({username});
+
+            if (!user) {
+                throw new AuthenticationError("Invalid Login Credentials");
+            }
+
+            const correctPassword = await user.isCorrectPassword(password);
+
+            if (!correctPassword) {
+                throw new AuthenticationError("Invalid Login Credentials");
+            }
+
+            return user;
+        },
         addEvent: async (parent, args) => {
             const event = await Event.create(args);
 
             return event;
         },
-        addTask: async (parent, {eventId, taskName}) => {
+        addTask: async (parent, {eventId, name}) => {
             const updatedEvent = await Event.findOneAndUpdate(
                 {_id: eventId},
-                {$push: {tasks: {taskName}}},
+                {$push: {tasks: {name}}},
                 {new: true}
             );
 
