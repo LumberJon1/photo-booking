@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Homepage from './pages/Homepage';
 
 import React from 'react';
 import {
@@ -21,7 +23,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>Content Goes Here</div>
+      <Router>
+        <div className='container'>
+          <Routes>
+              <Route
+                path="/"
+                element={<Homepage />}
+              />
+          </Routes>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
