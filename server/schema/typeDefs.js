@@ -37,9 +37,14 @@ const typeDefs = gql`
         task(_id: ID): Task
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Mutation {
-        addUser(username: String!, email: String!, password: String!, firstName: String, lastName: String): User
-        login(username: String!, password: String!): User
+        addUser(username: String!, email: String!, password: String!, firstName: String, lastName: String): Auth
+        login(username: String!, password: String!): Auth
         addEvent(eventName: String!, eventType: String!, eventDate: String, duration: Float!, location: String!): Event
         addTask(eventId: ID!, name: String!, dueDate: String, completed: Boolean): Event
     }
