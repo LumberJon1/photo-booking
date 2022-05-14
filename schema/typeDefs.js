@@ -40,7 +40,7 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, email: String!, password: String!, firstName: String, lastName: String): User
         addEvent(eventName: String!, eventType: String!, eventDate: String, duration: Float!, location: String!): Event
-        addTask(eventId: ID!, name: String!, dueDate: String, completed: Boolean): Event
+        addTask(eventId: ID!, taskName: String!, dueDate: String, completed: Boolean): Event
     }
 
 `;
