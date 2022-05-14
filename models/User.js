@@ -33,12 +33,12 @@ const userSchema = new Schema(
             isNumeric: false
         },
         // Include child events, which is an array of any open events that belong to that user
-        // events: [
-        //     {
-        //         type: Schema.Types.ObjectId,
-        //         ref: "Event"
-        //     }
-        // ]
+        events: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Event"
+            }
+        ]
     }
 )
 

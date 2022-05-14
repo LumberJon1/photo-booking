@@ -17,11 +17,11 @@ taskSchema = new Schema(
             type: Boolean,
             default: false
         },
-        // parentEvent: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: "Event",
-        //     required: true
-        // }
+        parentEvent: {
+            type: Schema.Types.ObjectId,
+            ref: "Event",
+            required: true
+        }
     }
 )
 
