@@ -33,13 +33,14 @@ const resolvers = {
 
             return event;
         },
-        addTask: async (parent, eventId, args) => {
+        addTask: async (parent, {eventId, name}) => {
             const updatedEvent = await Event.findOneAndUpdate(
                 {_id: eventId},
-                {$push: {tasks: {args}}}
-            )
+                {$push: {tasks: {name}}},
+                {new: true}
+            ).populate("tasks")
 
-            return updatedEvent.tasks;
+            return updatedEvent;
         }
     }
 };
