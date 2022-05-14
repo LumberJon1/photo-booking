@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Homepage = () => {
 
@@ -6,15 +7,21 @@ const Homepage = () => {
         <div>
             <div>
                 <img src="#" alt="Project icon" />
-                <a href="#">Projects</a>
+                <Link to="/projects">
+                    <h2>Projects</h2>
+                </Link>
             </div>
             <div>
                 <img src="#" alt="Calendar icon" />
-                <a href="#">Calendar</a>
+                <Link to="/calendar">
+                    <h2>Calendar</h2>
+                </Link>
             </div>
             <div>
                 <img src="#" alt="Profile icon" />
-                <a href="#">Profile</a>
+                <Link to="/profile">
+                    <h2>Profile</h2>
+                </Link>
             </div>
         </div>
     )
