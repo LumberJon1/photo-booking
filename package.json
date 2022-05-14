@@ -1,9 +1,27 @@
 {
-  "dependencies": {
-    "apollo-server-express": "^3.7.0",
-    "bcrypt": "^5.0.1",
-    "express": "^4.18.1",
-    "graphql": "^16.5.0",
-    "mongoose": "^6.3.3"
+  "name": "photo-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "watch": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LumberJon1/photo-booking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LumberJon1/photo-booking/issues"
+  },
+  "homepage": "https://github.com/LumberJon1/photo-booking#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
   }
 }
