@@ -27,6 +27,10 @@ const eventSchema = new Schema(
             type: String,
             required: true
         },
+        username: {
+            type: String,
+            required: true
+        },
         tasks: [taskSchema]
     }
 );

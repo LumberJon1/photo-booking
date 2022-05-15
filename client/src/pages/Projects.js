@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_EVENTS } from "../utils/queries";
+import ProjectList from "../components/ProjectList";
 
 
 const Projects = () => {
@@ -14,9 +15,12 @@ const Projects = () => {
     return (
         <div>
             <h1>Upcoming Projects</h1>
-            <div>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
 
-            </div>
+                <ProjectList projects={events} />
+            )}
         </div>
     );
 };

@@ -16,11 +16,6 @@ const taskSchema = new Schema(
         completed: {
             type: Boolean,
             default: false
-        },
-        parentEvent: {
-            type: Schema.Types.ObjectId,
-            ref: "Event",
-            required: true
         }
     }
 )

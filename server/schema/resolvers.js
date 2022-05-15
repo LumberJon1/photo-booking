@@ -1,4 +1,4 @@
-const {User, Event, Task} = require("../models");
+const {User, Event} = require("../models");
 const {AuthenticationError} = require("apollo-server-express");
 const {signToken} = require("../utils/auth");
 
@@ -27,18 +27,17 @@ const resolvers = {
                 .select("-__v -password")
                 .populate("events")
         },
-        events: async () => {
-            return Event.find()
+        events: async (parent, {username}) => {
+            const params = username ? {username} : {};
+            return Event.find(params)
                 .sort({createdAt: -1})
                 .select("-__v")
                 .populate("tasks")
         },
-        // Resolve all tasks for a given event ID
-        tasks: async (parent, eventId) => {
-            return Event.findOne({_id: eventId})
-                .select("tasks");
-
-
+        event: async (parent, {_id}) => {
+            return Event.findOne({_id})
+                .include("-__v")
+                .populate("tasks")
         }
     },
     Mutation: {
