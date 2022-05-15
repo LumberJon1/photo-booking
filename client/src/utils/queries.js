@@ -26,3 +26,15 @@ export const QUERY_EVENTS = gql`
       }
     }
   `;
+
+  export const QUERY_ME = gql`
+    {
+      me {
+        _id
+        username
+        email
+        firstName
+        lastName
+      }
+    }
+  `

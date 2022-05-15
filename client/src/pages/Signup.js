@@ -5,7 +5,7 @@ import {ADD_USER} from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-    const [formState, setFormState] = useState({ username: "", password: "", email: ""});
+    const [formState, setFormState] = useState({ username: "", password: "", email: "", firstName: "", lastName: ""});
     const [addUser, {error}] = useMutation(ADD_USER);
   
     // update state based on form input changes
@@ -68,6 +68,24 @@ const Signup = () => {
                   type='email'
                   id='email'
                   value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className='form-input'
+                  placeholder='First Name'
+                  name='firstName'
+                  type='firstName'
+                  id='firstName'
+                  value={formState.firstName}
+                  onChange={handleChange}
+                />
+                <input
+                  className='form-input'
+                  placeholder='Last Name'
+                  name='lastName'
+                  type='lastName'
+                  id='lastName'
+                  value={formState.lastName}
                   onChange={handleChange}
                 />
                 <button className='btn d-block w-100' type='submit'>
