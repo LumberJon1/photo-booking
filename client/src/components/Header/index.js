@@ -1,16 +1,22 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Header = () => {
 
     return (
-        <div>
-            <button>
-                Log In/ Sign Up
-            </button>
-            <button>
-                Log Out
-            </button>
-        </div>
+        <header>
+            <div>
+                <button>
+                    <Link to="/login">Log In</Link>
+                </button>
+                <button>
+                    <Link to="/signup">Sign Up</Link>
+                </button>
+                <button>
+                    <Link to="/">Log Out</Link>
+                </button>
+            </div>
+        </header>
     )
 }
 

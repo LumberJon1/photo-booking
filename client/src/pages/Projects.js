@@ -1,10 +1,12 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_EVENTS } from "../utils/queries";
+import { QUERY_EVENTS} from "../utils/queries";
 import ProjectList from "../components/ProjectList";
 
 
+
 const Projects = () => {
+
     // useQuery hook grabs the data from the query and shows loading while the async function works
     const {loading, data} = useQuery(QUERY_EVENTS);
 
