@@ -19,7 +19,7 @@ const Projects = () => {
                 <div>Loading...</div>
             ) : (
 
-                <ProjectList projects={events} />
+                <ProjectList events={events} />
             )}
         </div>
     );
