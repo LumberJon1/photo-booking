@@ -1,5 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Homepage from './pages/Homepage';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Projects from "./pages/Projects";
 import NoMatch from './pages/NoMatch';
 import Header from "./components/Header"
@@ -38,6 +40,14 @@ function App() {
               <Route 
                 path="/projects"
                 element={<Projects />}
+              />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup />}
               />
               <Route
                 path="*"
