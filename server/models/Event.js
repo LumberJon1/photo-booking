@@ -21,11 +21,11 @@ const eventSchema = new Schema(
             type: Number,
             min: 0.25,
             max: 12,
-            required: true
+            required: false
         },
         location: {
             type: String,
-            required: true
+            required: false
         },
         username: {
             type: String,

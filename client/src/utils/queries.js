@@ -13,28 +13,34 @@ export const QUERY_EVENTS = gql`
       }
     }
   }
-  `;
+`;
 
-  export const QUERY_USER = gql`
-    query user($username: String!) {
-      user(username: $username) {
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      firstName
+      lastName
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      firstName
+      lastName
+      events {
         _id
-        username
-        email
-        firstName
-        lastName
+        eventName
+        eventType
+        eventDate
       }
     }
-  `;
-
-  export const QUERY_ME = gql`
-    {
-      me {
-        _id
-        username
-        email
-        firstName
-        lastName
-      }
-    }
-  `
+  }
+`;

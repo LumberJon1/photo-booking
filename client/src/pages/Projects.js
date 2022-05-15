@@ -1,17 +1,20 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_EVENTS} from "../utils/queries";
+import { QUERY_ME} from "../utils/queries";
 import ProjectList from "../components/ProjectList";
+import Auth from "../utils/auth";
 
 
 
 const Projects = () => {
 
+    const loggedIn = Auth.loggedIn();
+
     // useQuery hook grabs the data from the query and shows loading while the async function works
-    const {loading, data} = useQuery(QUERY_EVENTS);
+    const {loading, data} = useQuery(QUERY_ME);
 
     // Optional chaining to check if object exists and assign to an empty array if not
-    const events = data?.events || [];
+    const events = data?.me.events || [];
     console.log(events);
     
     return (
