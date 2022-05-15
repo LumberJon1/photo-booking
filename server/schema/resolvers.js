@@ -22,6 +22,11 @@ const resolvers = {
                 .select("-__v -password")
                 .populate("events");
         },
+        user: async (parent, {username}) => {
+            return User.findOne({username})
+                .select("-__v -password")
+                .populate("events")
+        },
         events: async () => {
             return Event.find()
                 .sort({createdAt: -1})

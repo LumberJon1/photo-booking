@@ -9,6 +9,7 @@ const Projects = () => {
 
     // Optional chaining to check if object exists and assign to an empty array if not
     const events = data?.events || [];
+    console.log(events);
     
     return (
         <div>
