@@ -59,10 +59,21 @@ const resolvers = {
             const token = signToken(user);
             return {token, user};
         },
-        addEvent: async (parent, args) => {
-            const event = await Event.create(args);
+        addEvent: async (parent, args, context) => {
+            if (context.user) {
+                console.log(args);
+                const event = await Event.create(args);
 
-            return event;
+                await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    {$push: {events: event._id}},
+                    {new: true}
+                );
+
+                return event;
+            }
+
+            throw new AuthenticationError("You need to be logged in");
         },
         addTask: async (parent, {eventId, name}) => {
             const updatedEvent = await Event.findOneAndUpdate(
