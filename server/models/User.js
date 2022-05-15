@@ -22,7 +22,7 @@ const userSchema = new Schema(
         },
         firstName: {
             type: String,
-            required: true,
+            required: false,
             isAlpha: true,
             isNumeric: false
         },
