@@ -15,12 +15,27 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
+// Allows the use of authentication tokens to use in HttpLink
+import {setContext} from "@apollo/client/link/context";
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+// Sets the HTTP headers with the token for every HTTP request made.
+// Underscore here is a placeholder for an unused required first parameter
+const authLink = setContext((_, {headers}) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
