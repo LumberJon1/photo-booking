@@ -1,9 +1,23 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import Auth from "../../utils/auth";
 
 const ProjectList = ({events}) => {
     console.log("events: "+events);
     if (!events.length) {
-        return <h2>No Upcoming Projects</h2>;
+        return (
+            <div>
+                <h2>No Upcoming Projects</h2>
+                {Auth.loggedIn() && (
+                    <div>
+                        <button>
+                            <Link to="/addevent">Add New Event</Link>
+                        </button>
+                    </div>
+                )}
+            </div>
+
+        );
     }
 
     return (
@@ -24,6 +38,13 @@ const ProjectList = ({events}) => {
                     </div>
                 ))
             }
+            {Auth.loggedIn() && (
+                <div>
+                    <button>
+                        <Link to="/addevent">Add New Event</Link>
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

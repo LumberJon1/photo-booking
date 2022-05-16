@@ -2,13 +2,8 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME} from "../utils/queries";
 import ProjectList from "../components/ProjectList";
-import Auth from "../utils/auth";
-
-
 
 const Projects = () => {
-
-    const loggedIn = Auth.loggedIn();
 
     // useQuery hook grabs the data from the query and shows loading while the async function works
     const {loading, data} = useQuery(QUERY_ME);

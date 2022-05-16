@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Homepage from './pages/Homepage';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import EventForm from "./components/EventForm";
 import Projects from "./pages/Projects";
 import NoMatch from './pages/NoMatch';
 import Header from "./components/Header"
@@ -17,6 +18,7 @@ import {
 
 // Allows the use of authentication tokens to use in HttpLink
 import {setContext} from "@apollo/client/link/context";
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -63,6 +65,10 @@ function App() {
               <Route
                 path="/signup"
                 element={<Signup />}
+              />
+              <Route
+                path="/addevent"
+                element={<EventForm />}
               />
               <Route
                 path="*"
