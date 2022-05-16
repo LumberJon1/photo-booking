@@ -34,3 +34,18 @@ export const ADD_EVENT = gql`
         }
     }
 `;
+
+export const ADD_TASK = gql`
+    mutation addTask($eventID: ID!, $name: String!, $dueDate: String){
+        addTask(eventID: $eventID, name: $name, dueDate: $dueDate) {
+        _id
+        eventName
+        tasks {
+            _id
+            name
+            dueDate
+            completed
+        }
+        }
+    }
+`;

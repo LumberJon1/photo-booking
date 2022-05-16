@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import {useParams} from "react-router-dom";
 import {Link} from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import {useMutation} from "@apollo/client"
 import {QUERY_EVENT} from "../utils/queries";
+import {ADD_TASK} from "../utils/mutations";
+import Task from "../components/Task";
 
-const SingleEvent = (props) => {
+const SingleEvent = () => {
 
     // Grab the event's ID from the parameters that were passed to the route on App.js via ProjectList component
     const {id: eventId} = useParams();
@@ -14,10 +17,43 @@ const SingleEvent = (props) => {
         variables: {id: eventId}
     });
 
+    const [addTask, {error}] = useMutation(ADD_TASK);
+
     // Take the event from the query and transform for use in the component return below
     const event = data?.event || {};
-    console.log(eventId);
-    console.log(event);
+    
+    // UseState hooks to update the values for the new task form
+    const [formState, setFormState] = useState({eventID: eventId, name: "", dueDate: ""});
+
+    const [taskForm, setTaskForm] = useState(false);
+
+    // update state based on form input changes
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+        console.log(formState);
+        };
+
+    // Form submission handler
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+  
+        // Error handling
+        try {
+            const {data} = await addTask({
+                // Pass in the variables from formState to use in populating addUser
+                variables: {...formState}
+            });
+            console.log(data);
+          }
+          catch (e) {
+              console.error(e);
+          }
+      };
 
     return (
         <div>
@@ -33,19 +69,40 @@ const SingleEvent = (props) => {
                 </div>
                 <div>
                     <h2>Tasks</h2>
+                    <button onClick={() => setTaskForm(true)}>
+                        Add Task
+                    </button>
+                    {/* Conditionally render new task form */}
+                    {taskForm && (
+                        <div>
+                            <form onSubmit={handleFormSubmit}>
+                                <input
+                                    type="text"
+                                    placeholder="Task Name"
+                                    name="name"
+                                    id="name"
+                                    value={formState.name}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="date"
+                                    name="dueDate"
+                                    id="dueDate"
+                                    value={formState.dueDate}
+                                    onChange={handleChange}
+                                />
+                                <button type="submit">Submit</button>
+                                {error && (
+                                    <p>Could Not Submit Task</p>
+                                )}
+                            </form>
+                        </div>
+                    )}
                     {event.tasks ? (
                         <div>
                             {event.tasks.map(task => (
                                 <div key={task._id}>
-                                    <h3>
-                                        {task.name}
-                                    </h3>
-                                    <p>
-                                        Due on {task.dueDate}
-                                    </p>
-                                    <p>
-                                        Completed: {task.completed}
-                                    </p>
+                                    <Task props={task} />
                                 </div>
                             ))}
                         </div>
@@ -55,10 +112,6 @@ const SingleEvent = (props) => {
                         </h3>
                     )}
                 </div>
-                <button>
-                    Add Task
-                    {/* Add capability to add tasks on click */}
-                </button>
             </div>
         </div>
     )
