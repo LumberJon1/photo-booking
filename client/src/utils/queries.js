@@ -25,6 +25,8 @@ export const QUERY_EVENT = gql`
       tasks {
         _id
         name
+        dueDate
+        completed
       }
     }
   }

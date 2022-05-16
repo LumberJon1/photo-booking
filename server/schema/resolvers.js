@@ -77,10 +77,10 @@ const resolvers = {
 
             throw new AuthenticationError("You need to be logged in.");
         },
-        addTask: async (parent, {eventId, name}) => {
+        addTask: async (parent, {eventID, name}) => {
             const updatedEvent = await Event.findOneAndUpdate(
-                {_id: eventId},
-                {$push: {tasks: {name}}},
+                {_id: eventID},
+                {$push: {tasks: {name: name}}},
                 {new: true}
             );
 

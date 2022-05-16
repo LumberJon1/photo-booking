@@ -23,6 +23,8 @@ const typeDefs = gql`
     type Task {
         _id: ID
         name: String
+        dueDate: String
+        completed: Boolean
     }
 
     type Query {
@@ -37,7 +39,7 @@ const typeDefs = gql`
         login(username: String!, password: String!): Auth
         addUser(username: String!, password: String!, email: String!, firstName: String!, lastName: String): Auth
         addEvent(eventName: String, eventType: String, eventDate: String, username: String!): Event
-        addTask(name: String!): Task
+        addTask(eventID: ID!, name: String!): Event
     }
     
     type Auth {

@@ -31,7 +31,34 @@ const SingleEvent = (props) => {
                     </button>
                     {/* TODO: There will be an additional button here to view on calendar */}
                 </div>
-
+                <div>
+                    <h2>Tasks</h2>
+                    {event.tasks ? (
+                        <div>
+                            {event.tasks.map(task => (
+                                <div key={task._id}>
+                                    <h3>
+                                        {task.name}
+                                    </h3>
+                                    <p>
+                                        Due on {task.dueDate}
+                                    </p>
+                                    <p>
+                                        Completed: {task.completed}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <h3>
+                            No Tasks for this project
+                        </h3>
+                    )}
+                </div>
+                <button>
+                    Add Task
+                    {/* Add capability to add tasks on click */}
+                </button>
             </div>
         </div>
     )
