@@ -34,9 +34,8 @@ const resolvers = {
                 .select("-__v")
                 .populate("tasks")
         },
-        event: async (parent, {_id}) => {
-            return Event.findOne({_id})
-                .include("-__v")
+        event: async (parent, {id}) => {
+            return Event.findOne({_id: id})
                 .populate("tasks")
         }
     },

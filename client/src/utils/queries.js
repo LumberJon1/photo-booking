@@ -15,6 +15,21 @@ export const QUERY_EVENTS = gql`
   }
 `;
 
+export const QUERY_EVENT = gql`
+  query event($id: ID) {
+    event(id: $id) {
+      _id
+      eventName
+      eventType
+      eventDate
+      tasks {
+        _id
+        name
+      }
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {

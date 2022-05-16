@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import Auth from "../../utils/auth";
 
 const ProjectList = ({events}) => {
-    console.log("events: "+events);
     if (!events.length) {
         return (
             <div>
@@ -35,6 +34,9 @@ const ProjectList = ({events}) => {
                         <p>
                             Due on {event.eventDate}
                         </p>
+                        <button>
+                            <Link to={`/event/${event._id}`}>View Event</Link>
+                        </button>
                     </div>
                 ))
             }
