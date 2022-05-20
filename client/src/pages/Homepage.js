@@ -4,26 +4,35 @@ import {Link} from "react-router-dom";
 const Homepage = () => {
 
     return (
-        <div>
-            <div className="bg-slate-400">
-                <img src="#" alt="Project icon" />
-                <Link to="/projects">
-                    <h2>Projects</h2>
+        <div className="w-full flex flex-col justify-center items-stretch">
+            <div className="flex flex-col justify-center items-center h-20 my-4">
+                <Link to="/projects"
+                    className="flex flex-col justify-center items-center h-full w-1/2"
+                    >
+                    <span className="material-icons md-48 purple400">
+                        camera_enhance
+                    </span>
+                    <h2 className="font-bold text-lg">Projects</h2>
                 </Link>
             </div>
-            <div>
-                <img src="#" alt="Calendar icon" />
-                <Link to="/calendar">
-                    <h2>Calendar</h2>
+            <div className="flex flex-col justify-center items-center h-20 my-4">
+                <Link to="/calendar"
+                    className="flex flex-col justify-center items-center h-full w-1/2"
+                >
+                    <span className="material-icons md-48 blue400">
+                        calendar_month
+                    </span>
+                    <h2 className="font-bold text-lg">Calendar</h2>
                 </Link>
             </div>
-            <div>
-                <img src="#" alt="Profile icon" />
-                <span className="material-icons">
-                    account_circle
-                </span>
-                <Link to="/profile">
-                    <h2>Profile</h2>
+            <div className="flex flex-col justify-center items-center h-20 my-4">
+                <Link to="/profile"
+                    className="flex flex-col justify-center items-center h-full w-1/2"
+                >
+                    <span className="material-icons md-48 orange400">
+                        account_circle
+                    </span>
+                    <h2 className="font-bold text-lg">Profile</h2>
                 </Link>
             </div>
         </div>

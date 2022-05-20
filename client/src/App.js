@@ -46,8 +46,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='container'>
-          <header>
+        <div className="container h-screen flex flex-col items-center">
+          <header className="flex h-14 bg-slate-500 w-full">
             <Header />
           </header>
           <Routes>
@@ -80,7 +80,7 @@ function App() {
                 element={<NoMatch />}
               />
           </Routes>
-          <footer>
+          <footer className="absolute inset-x-0 bottom-0 text-center">
             <Footer />
           </footer>
         </div>
