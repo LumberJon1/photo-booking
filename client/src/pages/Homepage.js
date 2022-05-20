@@ -5,7 +5,7 @@ const Homepage = () => {
 
     return (
         <div>
-            <div>
+            <div className="bg-slate-400">
                 <img src="#" alt="Project icon" />
                 <Link to="/projects">
                     <h2>Projects</h2>
@@ -19,6 +19,9 @@ const Homepage = () => {
             </div>
             <div>
                 <img src="#" alt="Profile icon" />
+                <span className="material-icons">
+                    account_circle
+                </span>
                 <Link to="/profile">
                     <h2>Profile</h2>
                 </Link>
