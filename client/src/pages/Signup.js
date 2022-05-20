@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from "react";
 import {useMutation} from "@apollo/client";
 import {ADD_USER} from "../utils/mutations";
+import {Button, TextField} from "@mui/material";
 import Auth from "../utils/auth";
 
 const Signup = () => {
@@ -37,66 +38,65 @@ const Signup = () => {
     };
   
     return (
-      <main className='flex-row justify-center mb-4'>
-        <div className='col-12 col-md-6'>
-          <div className='card'>
-            <h4 className='card-header'>Sign Up</h4>
-            <div className='card-body'>
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className='form-input'
-                  placeholder='Your username'
-                  name='username'
-                  type='username'
-                  id='username'
-                  value={formState.username}
-                  onChange={handleChange}
-                />
-                <input
-                  className='form-input'
-                  placeholder='******'
-                  name='password'
-                  type='password'
-                  id='password'
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <input
-                  className='form-input'
-                  placeholder='Your email'
-                  name='email'
-                  type='email'
-                  id='email'
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className='form-input'
-                  placeholder='First Name'
-                  name='firstName'
-                  type='firstName'
-                  id='firstName'
-                  value={formState.firstName}
-                  onChange={handleChange}
-                />
-                <input
-                  className='form-input'
-                  placeholder='Last Name'
-                  name='lastName'
-                  type='lastName'
-                  id='lastName'
-                  value={formState.lastName}
-                  onChange={handleChange}
-                />
-                <button className='btn d-block w-100' type='submit'>
-                  Submit
-                </button>
-                {error && <div>Signup failed</div>}
-              </form>
-            </div>
-          </div>
+      <div className='flex flex-col justify-start items-center h-full w-screen'>
+        <div>
+          <h4 className="font-bold text-xl mb-6 mt-2">Sign Up</h4>
         </div>
-      </main>
+        <form onSubmit={handleFormSubmit}
+          className="flex flex-col items-center justify-evenly p-3 bg-slate-100 h-3/4 w-3/4 rounded shadow-lg"
+        >
+          <TextField
+            className=""
+            label='Username'
+            name='username'
+            type='username'
+            id='username'
+            value={formState.username}
+            onChange={handleChange}
+          />
+          <TextField
+            className=""
+            placeholder='******'
+            label="Password"
+            name='password'
+            type='password'
+            id='password'
+            value={formState.password}
+            onChange={handleChange}
+          />
+          <TextField
+            className=""
+            label='Email'
+            name='email'
+            type='email'
+            id='email'
+            value={formState.email}
+            onChange={handleChange}
+          />
+          <TextField
+            className=""
+            label='First Name'
+            name='firstName'
+            type='firstName'
+            id='firstName'
+            value={formState.firstName}
+            onChange={handleChange}
+          />
+          <TextField
+            className='form-TextField'
+            label='Last Name'
+            name='lastName'
+            type='lastName'
+            id='lastName'
+            value={formState.lastName}
+            onChange={handleChange}
+          />
+          <Button variant="contained" type='submit'>
+            Submit
+          </Button>
+          {error && <div className='text-red-600 font-bold text-lg'>Signup failed</div>}
+        </form>
+      </div>
     );
   };
   

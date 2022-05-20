@@ -48,7 +48,7 @@ const Login = (props) => {
         <h4 className="font-bold text-xl mb-6 mt-2">Log In</h4>
       </div>
       <form onSubmit={handleFormSubmit}
-        className="flex flex-col items-center justify-evenly p-2 bg-slate-200 h-1/2 rounded shadow-lg"
+        className="flex flex-col items-center justify-evenly p-2 bg-slate-100 h-1/2 rounded shadow-lg"
       >
         <TextField
           id="username"
