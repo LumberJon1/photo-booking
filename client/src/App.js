@@ -50,36 +50,38 @@ function App() {
           <header className="flex h-14 bg-slate-500 w-full">
             <Header />
           </header>
-          <Routes>
-              <Route
-                path="/"
-                element={<Homepage />}
-              />
-              <Route 
-                path="/projects"
-                element={<Projects />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/addevent"
-                element={<EventForm />}
-              />
-              <Route
-                path="/event/:id"
-                element={<SingleEvent />}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
-          </Routes>
+          <main className="h-full">
+            <Routes>
+                <Route
+                  path="/"
+                  element={<Homepage />}
+                />
+                <Route 
+                  path="/projects"
+                  element={<Projects />}
+                />
+                <Route
+                  path="/login"
+                  element={<Login />}
+                />
+                <Route
+                  path="/signup"
+                  element={<Signup />}
+                />
+                <Route
+                  path="/addevent"
+                  element={<EventForm />}
+                />
+                <Route
+                  path="/event/:id"
+                  element={<SingleEvent />}
+                />
+                <Route
+                  path="*"
+                  element={<NoMatch />}
+                />
+            </Routes>
+          </main>
           <footer className="absolute inset-x-0 bottom-0 text-center">
             <Footer />
           </footer>

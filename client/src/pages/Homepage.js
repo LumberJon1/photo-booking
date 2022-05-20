@@ -1,10 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Auth from "../utils/auth";
+import {useQuery} from "@apollo/client"
+import { QUERY_ME } from "../utils/queries";
 
 const Homepage = () => {
 
+    const {data} = useQuery(QUERY_ME);
+
+    // Optional chaining to check if object exists and assign to an empty array if not
+    const user = data?.me.firstName || [];
+    console.log(user);
+
     return (
+
         <div className="w-full flex flex-col justify-center items-stretch">
+            {Auth.loggedIn && <h1 className="font-bold text-xl text-cyan-600 py-4">Hello, {user}!</h1>}
             <div className="flex flex-col justify-center items-center h-20 my-4">
                 <Link to="/projects"
                     className="flex flex-col justify-center items-center h-full w-1/2"

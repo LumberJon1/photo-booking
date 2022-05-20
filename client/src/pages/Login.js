@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useMutation} from "@apollo/client";
 import {LOGIN_USER} from "../utils/mutations";
 import Auth from '../utils/auth';
+import {TextField, Button} from '@mui/material';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ username: "", password: "" });
@@ -15,6 +16,7 @@ const Login = (props) => {
       ...formState,
       [name]: value,
     });
+    console.log(formState);
   };
 
   // submit form
@@ -41,39 +43,39 @@ const Login = (props) => {
   };
 
   return (
-    <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
-          <h4 className='card-header'>Login</h4>
-          <div className='card-body'>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className='form-input'
-                placeholder='Your username'
-                name='username'
-                type='username'
-                id='username'
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button className='btn d-block w-100' type='submit'>
-                Submit
-              </button>
-              {error && <div>Login failed</div>}
-            </form>
-          </div>
-        </div>
+    <div className='flex flex-col justify-start items-center h-full w-screen'>
+      <div>
+        <h4 className="font-bold text-xl mb-6 mt-2">Log In</h4>
       </div>
-    </main>
+      <form onSubmit={handleFormSubmit}
+        className="flex flex-col items-center justify-evenly p-2 bg-slate-200 h-1/2 rounded shadow-lg"
+      >
+        <TextField
+          id="username"
+          label="Username"
+          type="username"
+          name="username"
+          required
+          value={formState.username}
+          onChange={handleChange}
+        >
+        </TextField>
+        <TextField
+          id="password"
+          label="password"
+          name="password"
+          required
+          type="password"
+          value={formState.password}
+          onChange={handleChange}
+        >
+        </TextField>
+        <Button type="submit" variant="contained">
+          Submit
+        </Button>
+        {error && <div className='text-red-600 font-bold text-lg'>Login failed</div>}
+      </form>
+    </div>
   );
 };
 

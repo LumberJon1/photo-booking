@@ -22,9 +22,12 @@ const Header = () => {
             and a ternary operator */}
             {Auth.loggedIn() ? (
                 <>
-                    <button onClick={logout}>
-                        Log Out
-                    </button>
+                <Button
+                    onClick={logout}
+                    variant="contained"
+                >
+                    Log Out
+                </Button>
                 </>
             ) : (
                 <>
