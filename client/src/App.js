@@ -50,7 +50,7 @@ function App() {
           <header className="flex bg-slate-500 w-full">
             <Header />
           </header>
-          <main className="h-full pb-16">
+          <main className="h-full pb-16 z-10">
             <Routes>
                 <Route
                   path="/"
@@ -82,7 +82,7 @@ function App() {
                 />
             </Routes>
           </main>
-          <footer className="fixed inset-x-0 bottom-0 text-center h-8">
+          <footer className="fixed bottom-0 text-center text-slate-300 h-8 z-0">
             <Footer />
           </footer>
         </div>

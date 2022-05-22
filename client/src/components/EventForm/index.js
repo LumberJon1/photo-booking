@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useMutation, useQuery} from "@apollo/client";
 import {ADD_EVENT} from "../../utils/mutations";
 import {QUERY_ME} from "../../utils/queries"
+import {Button, TextField} from "@mui/material";
 
 const EventForm = () => {
 
@@ -37,6 +38,7 @@ const EventForm = () => {
                 variables: {...formState, username: username}
             });
             console.log(data);
+            window.location.assign("/projects");
             }
             catch (e) {
                 console.error(e);
@@ -45,26 +47,28 @@ const EventForm = () => {
 
 
     return (
-        <div>
-            <h2>New Event</h2>
-            <form onSubmit={handleFormSubmit}>
-                <input
+        <div className="w-full h-1/2">
+            <h1 className="font-bold text-xl py-4 text-center">New Event</h1>
+            <form
+                className="flex flex-col w-full border shadow-lg p-3 mx-auto items-stretch justify-evenly h-full rounded "
+                onSubmit={handleFormSubmit}>
+                <TextField
                     type="text"
+                    label="Event Name"
                     name="eventName"
                     id="eventName"
                     value={formState.eventName}
-                    placeholder="Event Name"
                     onChange={handleChange}
                 />
-                <input
+                <TextField
                     type="text"
+                    label="Event Type"
                     name="eventType"
                     id="eventType"
                     value={formState.eventType}
-                    placeholder="Event Type"
                     onChange={handleChange}
                 />
-                <input
+                <TextField
                     type="date"
                     name="eventDate"
                     id="eventDate"
@@ -72,14 +76,17 @@ const EventForm = () => {
                     onChange={handleChange}
                 />
                 {/* Eventually want to add event length and location */}
-                <button>
-                    <Link to="/projects">Cancel</Link>
-                </button>
-                <button
-                    type="submit"
-                    name="submit"
-                    id="submit"
-                >Submit</button>
+                <div className="flex w-full justify-evenly items-center">
+                    <Button variant="contained">
+                        <Link to="/projects">Cancel</Link>
+                    </Button>
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        name="submit"
+                        id="submit"
+                    >Submit</Button>
+                </div>
                 {error && <div>Event Creation Failed</div>}
             </form>
         </div>
