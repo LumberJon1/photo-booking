@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     return (
-        <nav className="flex items-center justify-evenly w-full">
+        <nav className="flex items-center justify-evenly w-full h-16">
             <Button variant="contained">
                 <Link to="/">Home</Link>
             </Button>

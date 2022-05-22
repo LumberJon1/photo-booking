@@ -23,6 +23,8 @@ Sizing*/
 /* Color */
 .material-icons.orange400 { color: #FB8C00; }
 .material-icons.blue400 { color: #5593f0; }
+.material-icons.green400 { color: #39a042; }
+.material-icons.yellow400 { color: #c79c26; }
 .material-icons.purple400 { color: #923ada; }
 
 /* Tailwind implementation/configuration */

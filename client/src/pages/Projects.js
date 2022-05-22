@@ -13,8 +13,8 @@ const Projects = () => {
     console.log(events);
     
     return (
-        <div>
-            <h1>Upcoming Projects</h1>
+        <div className="pb-16">
+            <h1 className="font-bold text-xl py-4 text-center">Upcoming Projects</h1>
             {loading ? (
                 <div>Loading...</div>
             ) : (

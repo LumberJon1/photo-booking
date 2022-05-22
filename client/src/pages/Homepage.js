@@ -13,9 +13,13 @@ const Homepage = () => {
     console.log(user);
 
     return (
-
+        
         <div className="w-full flex flex-col justify-center items-stretch">
-            {Auth.loggedIn && <h1 className="font-bold text-xl text-cyan-600 py-4">Hello, {user}!</h1>}
+            {!Auth.loggedIn() ? (
+                <div></div>
+            ) :  (
+                <h1 className="font-bold text-xl text-cyan-600 py-4">Hello, {user}!</h1>
+            )}
             <div className="flex flex-col justify-center items-center h-20 my-4">
                 <Link to="/projects"
                     className="flex flex-col justify-center items-center h-full w-1/2"

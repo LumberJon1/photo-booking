@@ -46,11 +46,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="container h-screen flex flex-col items-center">
-          <header className="flex h-14 bg-slate-500 w-full">
+        <div className="container h-screen w-screen flex flex-col items-center">
+          <header className="flex bg-slate-500 w-full">
             <Header />
           </header>
-          <main className="h-full">
+          <main className="h-full pb-16">
             <Routes>
                 <Route
                   path="/"
@@ -82,7 +82,7 @@ function App() {
                 />
             </Routes>
           </main>
-          <footer className="absolute inset-x-0 bottom-0 text-center">
+          <footer className="fixed inset-x-0 bottom-0 text-center h-8">
             <Footer />
           </footer>
         </div>
