@@ -1,5 +1,6 @@
 const {Schema, model} = require("mongoose");
 const taskSchema = require("./Task");
+const dateFormat = require("../utils/dateFormat");
 
 const eventSchema = new Schema(
     {
@@ -12,10 +13,10 @@ const eventSchema = new Schema(
             required: true
         },
         eventDate: {
+            required: true,
             type: Date,
             default: Date.now,
-            // Consider formatting date in easier format
-            required: true
+            get: dueDate => dateFormat(dueDate)
         },
         duration: {
             type: Number,
@@ -32,8 +33,17 @@ const eventSchema = new Schema(
             required: true
         },
         tasks: [taskSchema]
+    },
+    {
+        toJSON: {
+            getters: true
+        }
     }
 );
+
+eventSchema.virtual("taskCount").get(function() {
+    return this.tasks.length;
+});
 
 const Event = model("Event", eventSchema);
 

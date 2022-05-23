@@ -1,4 +1,5 @@
 const {Schema} = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const taskSchema = new Schema(
     {
@@ -11,7 +12,7 @@ const taskSchema = new Schema(
             type: Date,
             default: Date.now,
             required: true,
-            // reformat
+            get: dueDate => dateFormat(dueDate)
         },
         completed: {
             type: Boolean,
