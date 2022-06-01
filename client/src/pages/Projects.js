@@ -10,7 +10,6 @@ const Projects = () => {
 
     // Optional chaining to check if object exists and assign to an empty array if not
     const events = data?.me.events || [];
-    console.log(events);
     
     return (
         <div className="pb-16">

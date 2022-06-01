@@ -10,7 +10,6 @@ const Homepage = () => {
 
     // Optional chaining to check if object exists and assign to an empty array if not
     const user = data?.me.firstName || [];
-    console.log(user);
 
     return (
         
@@ -20,15 +19,28 @@ const Homepage = () => {
             ) :  (
                 <h1 className="font-bold text-xl text-cyan-600 py-4">Hello, {user}!</h1>
             )}
+            {/* Conditionally set the link either to the projects if the user is logged in,
+            or the login page if they are not. */}
             <div className="flex flex-col justify-center items-center h-20 my-4">
-                <Link to="/projects"
-                    className="flex flex-col justify-center items-center h-full w-1/2"
+                {!Auth.loggedIn() ? (
+                    <Link to="/login"
+                        className="flex flex-col justify-center items-center h-full w-1/2"
                     >
                     <span className="material-icons md-48 purple400">
                         camera_enhance
                     </span>
                     <h2 className="font-bold text-lg">Projects</h2>
-                </Link>
+                    </Link>   
+                ) : (
+                    <Link to="/projects"
+                        className="flex flex-col justify-center items-center h-full w-1/2"
+                        >
+                        <span className="material-icons md-48 purple400">
+                            camera_enhance
+                        </span>
+                        <h2 className="font-bold text-lg">Projects</h2>
+                    </Link>
+                )}
             </div>
             <div className="flex flex-col justify-center items-center h-20 my-4">
                 <Link to="/calendar"
