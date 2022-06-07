@@ -41,9 +41,11 @@ const typeDefs = gql`
         addEvent(eventName: String, eventType: String, eventDate: String, username: String!): Event
         addTask(eventID: ID!, name: String!, dueDate: String): Event
         
+        editUser(userID: ID!, username: String, email: String, password: String, firstName: String, lastName: String): User
         editEvent(eventID: ID!, eventName: String, eventType: String, eventDate: String): Event
         editTask(eventID: ID!, taskID: ID!, name: String, dueDate: String, completed: String): Event
     
+        deleteUser(userID: ID!): User
         deleteEvent(eventID: ID!): User
         deleteTask(eventID: ID!, taskID: ID!): Event
     }

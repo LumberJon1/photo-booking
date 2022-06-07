@@ -88,7 +88,32 @@ const resolvers = {
             return updatedEvent;
         },
 
-        // Mutations to edit (update) data
+        // Mutations to edit (update) data...
+
+        // Update a user
+        editUser: async (parent, {userID, ...userData}, context) => {
+
+            if (context.user) {
+                console.log(userData);
+                const updatedUser = await User.findOneAndUpdate(
+                    {_id: userID},
+                    {
+                        username: userData.username,
+                        email: userData.email,
+                        password: userData.password,
+                        firstName: userData.firstName,
+                        lastName: userData.lastName
+                    },
+                    {new: true}
+                    );
+                    
+                return updatedUser;
+            }
+
+            throw new AuthenticationError("You need to be logged in.");
+        },
+
+
         editEvent: async (parent, {eventID, eventName, eventType, eventDate}) => {
             const updatedEvent = await Event.findOneAndUpdate(
                 {_id: eventID},
@@ -115,6 +140,21 @@ const resolvers = {
         },
 
         // Mutations to delete data...
+
+        // Delete a user
+        deleteUser: async (parent, {userID}, context) => {
+
+            if (context.user) {
+                const deletedUser = await User.findOneAndDelete(
+                    {_id: userID},
+                    {}
+                );
+                
+                return deletedUser;
+            }
+
+            throw new AuthenticationError("You need to be logged in.");
+        },
 
         // Delete a task from a parent event using event ID and taskID
         deleteTask: async (parent, {eventID, taskID,}) => {
