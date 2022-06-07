@@ -111,8 +111,9 @@ const SingleEvent = () => {
                 {event.tasks ? (
                     <div>
                         {event.tasks.map(task => (
-                            <div className="w-full h-20 bg-slate-100 border items-center p-1 my-4 rounded shadow-lg flex"
-                            key={task._id}>
+                            <div className="w-full h-28 bg-slate-100 border items-center p-1 my-4 rounded shadow-lg flex"
+                            key={task._id}
+                            >
                                 <Task props={task} />
                             </div>
                         ))}
