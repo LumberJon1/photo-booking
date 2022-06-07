@@ -114,7 +114,9 @@ const resolvers = {
             return updatedEvent;
         },
 
-        // Mutations to delete task
+        // Mutations to delete data...
+
+        // Delete a task from a parent event using event ID and taskID
         deleteTask: async (parent, {eventID, taskID,}) => {
 
             // Find parent event
@@ -125,6 +127,27 @@ const resolvers = {
                 );
                 
             return parentEvent;
+        },
+
+        // Delete an event from a user's events array
+        deleteEvent: async (parent, {eventID}, context) => {
+            if (context.user) {
+                console.log(eventID);
+                console.log(context.user);
+                const event = await Event.findOneAndDelete({_id: eventID});
+
+                const updatedUser = await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    {$pull: {events: {_id: eventID}}},
+                    {new: true}
+                )
+                .populate("events");
+
+                console.log(updatedUser);
+                return updatedUser;
+            }
+
+            throw new AuthenticationError("You need to be logged in.");
         }
 
 
