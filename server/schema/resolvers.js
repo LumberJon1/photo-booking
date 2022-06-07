@@ -1,6 +1,7 @@
 const {User, Event} = require("../models");
 const {AuthenticationError} = require("apollo-server-express");
 const {signToken} = require("../utils/auth");
+const { update } = require("../models/User");
 
 const resolvers = {
     Query: {
@@ -85,7 +86,48 @@ const resolvers = {
             );
 
             return updatedEvent;
+        },
+
+        // Mutations to edit (update) data
+        editEvent: async (parent, {eventID, eventName, eventType, eventDate}) => {
+            const updatedEvent = await Event.findOneAndUpdate(
+                {_id: eventID},
+                {eventName: eventName, eventType: eventType, eventDate: eventDate},
+                {new: true}
+            );
+
+            return updatedEvent;
+        },
+
+        editTask: async (parent, {eventID, taskID, name, dueDate, completed}) => {
+            const updatedEvent = await Event.findOneAndUpdate(
+                {_id: eventID, "tasks._id": taskID},
+                {
+                    "$set": {
+                        "tasks.$.name": name,
+                        "tasks.$.dueDate": dueDate,
+                        "tasks.$.completed": completed
+                    }
+                },
+                {new: true}
+            );
+            return updatedEvent;
+        },
+
+        // Mutations to delete task
+        deleteTask: async (parent, {eventID, taskID,}) => {
+
+            // Find parent event
+            const parentEvent = await Event.findOneAndUpdate(
+                {_id: eventID},
+                {$pull: {tasks: {_id: taskID}}},
+                {new: true}
+                );
+                
+            return parentEvent;
         }
+
+
     }
 };
 

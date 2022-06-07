@@ -40,6 +40,11 @@ const typeDefs = gql`
         addUser(username: String!, password: String!, email: String!, firstName: String!, lastName: String): Auth
         addEvent(eventName: String, eventType: String, eventDate: String, username: String!): Event
         addTask(eventID: ID!, name: String!, dueDate: String): Event
+        
+        editEvent(eventID: ID!, eventName: String, eventType: String, eventDate: String): Event
+        editTask(eventID: ID!, taskID: ID!, name: String, dueDate: String, completed: String): Event
+    
+        deleteTask(eventID: ID!, taskID: ID!): Event
     }
     
     type Auth {

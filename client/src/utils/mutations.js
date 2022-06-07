@@ -49,3 +49,36 @@ export const ADD_TASK = gql`
         }
     }
 `;
+
+// Mutations for updating data
+export const EDIT_EVENT = gql`
+    mutation editEvent($eventID: ID!, $eventName: String, $eventType: String, $eventDate: String){
+        editEvent(eventID: $eventID, eventName: $eventName, eventType: $eventType, eventDate: $eventDate) {
+            _id
+            eventName
+            eventType
+            eventDate
+            tasks {
+                _id
+                name
+                dueDate
+                completed
+            }
+        }
+    }
+`;
+
+export const EDIT_TASK = gql`
+mutation editTask($eventID: ID!, $taskID: ID!, $name: String, $dueDate: String, $completed: String){
+    editTask(eventID: $eventID, taskID: $taskID, name: $name, dueDate: $dueDate, completed: $completed) {
+        _id
+        eventName
+        tasks {
+            _id
+            name
+            dueDate
+            completed
+        }
+    }
+}
+`
