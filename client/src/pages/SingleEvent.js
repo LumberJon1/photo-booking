@@ -97,6 +97,7 @@ const SingleEvent = () => {
                                 variant="filled"
                                 type="date"
                                 name="dueDate"
+                                label="Due Date"
                                 id="dueDate"
                                 value={formState.dueDate}
                                 onChange={handleChange}
@@ -111,7 +112,7 @@ const SingleEvent = () => {
                 {event.tasks ? (
                     <div>
                         {event.tasks.map(task => (
-                            <div className="w-full h-28 bg-slate-100 border items-center p-1 my-4 rounded shadow-lg flex"
+                            <div className="w-full bg-slate-100 border mx-0 p-2 items-center my-4 rounded shadow-lg flex"
                             key={task._id}
                             >
                                 <Task props={task} />
