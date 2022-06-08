@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Button, TextField, Checkbox} from "@mui/material";
-import { DELETE_TASK, EDIT_TASK } from "../../utils/mutations";
+import {Button} from "@mui/material";
+import { DELETE_TASK} from "../../utils/mutations";
 import {useMutation} from "@apollo/client";
 import {useParams} from "react-router-dom";
 import EditTask from "./EditTask";

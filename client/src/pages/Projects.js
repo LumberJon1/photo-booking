@@ -18,7 +18,7 @@ const Projects = () => {
                 <div>Loading...</div>
             ) : (
 
-                <ProjectList events={events} />
+                <ProjectList props={events} />
             )}
         </div>
     );
