@@ -1,18 +1,20 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import { DELETE_EVENT } from "../../utils/mutations";
+import {useMutation} from "@apollo/client";
 import Button from "@mui/material/Button"
 
 const EventCard = ({props}) => {
+
+
+    // Mutations
+    const [deleteEvent] = useMutation(DELETE_EVENT);
 
     // Hooks
     const [focus, setFocus] = useState(false);
 
     // Focus handler
-    const handleFocus = (event) => {
-
-        // Grab the target event's eventID
-        console.log(props)
-
+    const handleFocus = () => {
         if (focus) {
             setFocus(false);
         }
@@ -20,6 +22,18 @@ const EventCard = ({props}) => {
             setFocus(true);
         }
     }
+
+    // Delete handler
+    const handleDelete = () => {
+        deleteEvent({
+            variables: {
+                eventID: props._id
+            }
+        });
+
+        console.log("Event fired.");
+    }
+
 
     return (
         <div onClick={handleFocus}
@@ -49,7 +63,9 @@ const EventCard = ({props}) => {
                     <Button variant="contained" color="info">
                         Edit
                     </Button>
-                    <Button variant="contained" color="warning">
+                    <Button variant="contained" color="warning"
+                        onClick={handleDelete}
+                    >
                         Delete
                     </Button>
                 </div>
