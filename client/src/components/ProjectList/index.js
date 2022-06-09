@@ -11,13 +11,13 @@ const ProjectList = ({props}) => {
 
     if (!props.length) {
         return (
-            <div>
-                <h2>No Upcoming Projects</h2>
+            <div className="bg-slate-100 mx-auto w-full p-4 text-center">
+                <h2 className="">No Upcoming Projects</h2>
                 {Auth.loggedIn() && (
-                    <div>
-                        <button>
+                    <div className="my-2">
+                        <Button variant="outlined">
                             <Link to="/addevent">Add New Event</Link>
-                        </button>
+                        </Button>
                     </div>
                 )}
             </div>

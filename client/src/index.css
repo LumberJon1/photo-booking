@@ -1,3 +1,10 @@
+:root {
+  margin: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,6 +26,9 @@ Sizing*/
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+.material-icons.md-64 { font-size: 64px; }
+.material-icons.md-80 { font-size: 80px; }
+.material-icons.md-120 { font-size: 120px; }
 
 /* Color */
 .material-icons.orange400 { color: #FB8C00; }

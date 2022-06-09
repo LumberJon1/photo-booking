@@ -44,50 +44,50 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="container h-screen w-screen flex flex-col items-center">
-          <header className="flex bg-slate-500 w-full">
-            <Header />
-          </header>
-          <main className="h-full pb-16 z-10">
-            <Routes>
-                <Route
-                  path="/"
-                  element={<Homepage />}
-                />
-                <Route 
-                  path="/projects"
-                  element={<Projects />}
-                />
-                <Route
-                  path="/login"
-                  element={<Login />}
-                />
-                <Route
-                  path="/signup"
-                  element={<Signup />}
-                />
-                <Route
-                  path="/addevent"
-                  element={<EventForm />}
-                />
-                <Route
-                  path="/event/:id"
-                  element={<SingleEvent />}
-                />
-                <Route
-                  path="*"
-                  element={<NoMatch />}
-                />
-            </Routes>
-          </main>
-          <footer className="fixed bottom-0 text-center text-slate-300 h-8 z-0">
-            <Footer />
-          </footer>
-        </div>
-      </Router>
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <div className="h-screen flex flex-col items-center m-0">
+            <header className="flex bg-slate-500 w-full">
+              <Header />
+            </header>
+            <main className="h-full pb-16 z-10">
+              <Routes>
+                  <Route
+                    path="/"
+                    element={<Homepage />}
+                  />
+                  <Route 
+                    path="/projects"
+                    element={<Projects />}
+                  />
+                  <Route
+                    path="/login"
+                    element={<Login />}
+                  />
+                  <Route
+                    path="/signup"
+                    element={<Signup />}
+                  />
+                  <Route
+                    path="/addevent"
+                    element={<EventForm />}
+                  />
+                  <Route
+                    path="/event/:id"
+                    element={<SingleEvent />}
+                  />
+                  <Route
+                    path="*"
+                    element={<NoMatch />}
+                  />
+              </Routes>
+            </main>
+            <footer className="fixed bottom-0 text-center text-slate-300 h-8 z-0">
+              <Footer />
+            </footer>
+          </div>
+        </Router>
+      </ApolloProvider>
   );
 }
 
