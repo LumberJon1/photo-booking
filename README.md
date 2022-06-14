@@ -28,7 +28,7 @@
   ![Screenshot](./)
 
   ## Contributing
-  Please feel free to contact me if you have questions about contributing to this project.  Ypu can reach out via my email or GirHub account linked below.
+  Please feel free to contact me if you have questions about contributing to this project.  You can reach out via my email or GitHub account linked below.
 
   ## Technologies
   * React

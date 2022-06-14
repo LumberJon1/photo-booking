@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import EventForm from "./components/EventForm";
 import Projects from "./pages/Projects";
 import SingleEvent from "./pages/SingleEvent";
+import Calendar from "./pages/Calendar";
 import NoMatch from './pages/NoMatch';
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -75,6 +76,10 @@ function App() {
                   <Route
                     path="/event/:id"
                     element={<SingleEvent />}
+                  />
+                  <Route
+                    path="/calendar"
+                    element={<Calendar />}
                   />
                   <Route
                     path="*"

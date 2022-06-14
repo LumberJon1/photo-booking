@@ -1,4 +1,6 @@
 import React from "react";
+import Auth from "../utils/auth";
+import Login from "./Login";
 
 const Calendar = () => {
 
@@ -10,7 +12,26 @@ const Calendar = () => {
 
     return (
         <div>
-            
+            {Auth.loggedIn() ? (
+                <div>
+                    <h2>
+                        {`<User>'s Calendar`}
+                    </h2>
+                    <div>
+                        <div>
+                            <span>Previous Button</span>
+                            <h3>Current Month</h3>
+                            <span>Next Button</span>
+                        </div>
+                        <div>
+                            Calendar Container
+                            {/* Calendar component goes here */}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <Login></Login>
+            )}
         </div>
     )
 }

@@ -48,7 +48,7 @@ const Login = (props) => {
         <h4 className="font-bold text-xl mb-6 mt-2">Log In</h4>
       </div>
       <form onSubmit={handleFormSubmit}
-        className="flex flex-col items-center justify-evenly p-2 bg-slate-100 h-1/2 rounded shadow-lg"
+        className="flex flex-col items-center justify-evenly p-6 bg-slate-100 h-1/2 rounded shadow-lg"
       >
         <TextField
           id="username"
@@ -60,16 +60,18 @@ const Login = (props) => {
           onChange={handleChange}
         >
         </TextField>
-        <TextField
-          id="password"
-          label="password"
-          name="password"
-          required
-          type="password"
-          value={formState.password}
-          onChange={handleChange}
-        >
-        </TextField>
+        <div className="my-6">
+          <TextField
+            id="password"
+            label="password"
+            name="password"
+            required
+            type="password"
+            value={formState.password}
+            onChange={handleChange}
+          >
+          </TextField>
+        </div>
         <Button type="submit" variant="contained">
           Submit
         </Button>
