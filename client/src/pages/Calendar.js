@@ -1,6 +1,7 @@
 import React from "react";
 import Auth from "../utils/auth";
 import Login from "./Login";
+import CalendarBox from "../components/Calendar"
 
 const Calendar = () => {
 
@@ -24,8 +25,7 @@ const Calendar = () => {
                             <span>Next Button</span>
                         </div>
                         <div>
-                            Calendar Container
-                            {/* Calendar component goes here */}
+                            <CalendarBox></CalendarBox>
                         </div>
                     </div>
                 </div>
